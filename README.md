@@ -1,66 +1,56 @@
-PhishMate - Spam Mail Detection
+# PhishMate - Spam Mail Detection
 
-Overview
+## Overview
 
 PhishMate is a tool designed to detect spam and phishing emails in real-time by analyzing incoming messages.
 
-Features
+## Features
 
-1. Real-time Email Monitoring
+### 1. Real-time Email Monitoring
 
-Monitors incoming emails.
+- Monitors incoming emails.
+- Triggers analysis upon receiving new emails.
 
-Triggers analysis upon receiving new emails.
+### 2. Spam Mail Detection
 
-2. Spam Mail Detection
+- **Content Analysis**: Detects common spam indicators such as urgent requests and suspicious wording.
+- **URL & Link Analysis**: Identifies suspicious links and domains.
+- **Metadata Evaluation**: Analyzes subject lines and attachment types.
 
-Content Analysis: Detects common spam indicators such as urgent requests and suspicious wording.
+## Plan
 
-URL & Link Analysis: Identifies suspicious links and domains.
+### Step 1: Idea Refinement
 
-Metadata Evaluation: Analyzes subject lines and attachment types.
+- Define the scope of spam mail detection.
+- Identify key elements for classification.
 
-Plan
+### Step 2: Conceptualization
 
-Step 1: Idea Refinement
+- Develop a broad approach for detecting spam patterns.
+- Outline necessary steps for an effective detection mechanism.
 
-Define the scope of spam mail detection.
+### Step 3: Integration Strategy
 
-Identify key elements for classification.
+- Determine how the tool will interact with email systems.
+- Identify key data points to extract for analysis.
 
-Step 2: Conceptualization
+### Step 4: Deployment Strategy
 
-Develop a broad approach for detecting spam patterns.
+- Consider how the tool will be shared and accessed.
+- Establish basic usage guidelines.
 
-Outline necessary steps for an effective detection mechanism.
+## Future Enhancements
 
-Step 3: Integration Strategy
+- Improve spam detection accuracy.
+- Add support for more email providers.
+- Enhance user interface for better visualization.
 
-Determine how the tool will interact with email systems.
-
-Identify key data points to extract for analysis.
-
-Step 4: Deployment Strategy
-
-Consider how the tool will be shared and accessed.
-
-Establish basic usage guidelines.
-
-Future Enhancements
-
-Improve spam detection accuracy.
-
-Add support for more email providers.
-
-Enhance user interface for better visualization.
-
-License
+## License
 
 This project is licensed under the Apache 2.0 License.
 
-Contributors
+## Contributors
 
-Keerthi K P
-
-Shri Sai Aravind R
+- Keerthi K P
+- Shri Sai Aravind R
 
