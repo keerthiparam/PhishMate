@@ -1,17 +1,37 @@
 {
-    "manifest_version": 3,
-    "name": "Mail Content Logger",
-    "version": "1.0",
-    "permissions": ["scripting", "activeTab"],
-    "host_permissions": ["https://mail.google.com/*"],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "content_scripts": [
-      {
-        "matches": ["https://mail.google.com/mail/u/0/*"],
-        "js": ["content.js"],
-        "run_at": "document_end"
-      }
-    ]
-  }
+  "manifest_version": 3,
+  "name": "Mail Content Logger",
+  "version": "1.0",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "https://outlook.live.com/mail/*",
+    "https://mail.yahoo.com/*",
+    "https://mail.proton.me/*",
+    "https://mail.zoho.com/*",
+    "https://www.icloud.com/mail/*",
+    "https://mail.aol.com/*",
+    "https://www.gmx.com/mail/*",
+    "https://mail.yandex.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.google.com/mail/u/0/*",
+        "https://outlook.live.com/mail/*",
+        "https://mail.yahoo.com/*",
+        "https://mail.proton.me/*",
+        "https://mail.zoho.com/*",
+        "https://www.icloud.com/mail/*",
+        "https://mail.aol.com/*",
+        "https://www.gmx.com/mail/*",
+        "https://mail.yandex.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
