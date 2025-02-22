@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "name": "Mail Content Logger",
+    "version": "1.0",
+    "permissions": ["scripting", "activeTab"],
+    "host_permissions": ["https://mail.google.com/*"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://mail.google.com/mail/u/0/*"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+      }
+    ]
+  }
