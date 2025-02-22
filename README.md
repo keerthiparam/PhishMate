@@ -41,7 +41,7 @@ PhishMate is a tool designed to detect spam and phishing emails in real-time by 
 
 ## Future Enhancements
 
-- Improve spam detection accuracy.
+- Improve spam detection accuracy by using robust models.
 - Add support for more email providers.
 - Enhance user interface for better visualization.
 
