@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Mail Content Logger",
   "version": "1.0",
-  "permissions": ["scripting", "activeTab"],
+  "permissions": ["scripting", "activeTab", "storage"],
   "host_permissions": [
     "https://mail.google.com/*",
     "https://outlook.live.com/mail/*",
@@ -33,5 +33,8 @@
       "js": ["content.js"],
       "run_at": "document_end"
     }
-  ]
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
 }
