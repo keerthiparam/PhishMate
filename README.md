@@ -1,4 +1,4 @@
-# PhishMate - Spam Mail Detection
+# PhishMate - Phishing Mail Detection
 
 ## Overview
 
