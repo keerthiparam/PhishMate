@@ -32,7 +32,7 @@ PhishMate is a tool designed to detect spam and phishing emails in real-time by 
 ### Step 3: Integration Strategy
 
 - Determine how the tool will interact with email systems.
-- Identify key data points to extract for analysis.
+- Identify data points to extract for analysis.
 
 ### Step 4: Deployment Strategy
 
