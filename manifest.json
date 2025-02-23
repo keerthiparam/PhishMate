@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Mail Content Logger",
   "version": "1.0",
-  "permissions": ["scripting", "activeTab", "storage","*://*.abuseipdb.com/*","*://*.google.com/*"],
+  "permissions": ["scripting", "activeTab", "storage"],
   "host_permissions": [
     "https://mail.google.com/*",
     "https://outlook.live.com/mail/*",
