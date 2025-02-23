@@ -1,11 +1,13 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import torch
 from transformers import BertTokenizer, BertForSequenceClassification
 import re
 
 app = Flask(__name__)
+CORS(app)
 
-MODEL_PATH = "./phishing_bert"
+MODEL_PATH = r"path_to_local_model"
 tokenizer = BertTokenizer.from_pretrained(MODEL_PATH)
 model = BertForSequenceClassification.from_pretrained(MODEL_PATH)
 model.eval()

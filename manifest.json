@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Mail Content Logger",
   "version": "1.0",
-  "permissions": ["scripting", "activeTab", "storage"],
+  "permissions": ["scripting", "activeTab", "storage","*://*.abuseipdb.com/*","*://*.google.com/*"],
   "host_permissions": [
     "https://mail.google.com/*",
     "https://outlook.live.com/mail/*",
@@ -12,7 +12,9 @@
     "https://www.icloud.com/mail/*",
     "https://mail.aol.com/*",
     "https://www.gmx.com/mail/*",
-    "https://mail.yandex.com/*"
+    "https://mail.yandex.com/*",
+    "https://api.abuseipdb.com/*",
+    "https://dns.google/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -36,5 +38,11 @@
   ],
   "action": {
     "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+  {
+    "resources": ["config.json"],
+    "matches": ["chrome-extension://*/*"]
   }
+ ]
 }
