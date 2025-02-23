@@ -1,7 +1,16 @@
 let lastEmailContent = "";
 let emailCount = 0;
 let linkCount = 0;
+let maliciousCount = 0;
 let abuseIPDB_API_KEY = "";
+
+// List of known malicious URLs (you can update this dynamically)
+const maliciousLinksList = [
+    "http://malicious-site.com",
+    "https://phishing-example.net",
+    "http://fake-login.com",
+    "https://steal-your-data.xyz"
+];
 
 // Request API key from background.js
 async function requestAPIKey() {
@@ -18,6 +27,16 @@ async function requestAPIKey() {
     });
 }
 
+// Check if a URL is malicious
+function checkMaliciousLinks(url) {
+    if (maliciousLinksList.includes(url)) {
+        maliciousCount++;
+        alert(`🚨 WARNING: The URL ${url} is a known malicious site! \n\n⚠️ DO NOT click the link or enter any credentials.`);
+        return true;
+    }
+    return false;
+}
+
 // Send IP check request to background.js
 async function checkIP(ip) {
     if (!abuseIPDB_API_KEY) {
@@ -31,7 +50,6 @@ async function checkIP(ip) {
             return;
         }
 
-        // Changed from response.result to response.data to match background.js
         const data = response.data;
         if (data && data.abuseConfidenceScore > 50) {
             alert(`🚨 Warning! The IP (${ip}) has a high abuse score (${data.abuseConfidenceScore}%).\n\n❗ Do NOT click on suspicious links or download attachments from this email.`);
@@ -42,13 +60,13 @@ async function checkIP(ip) {
 // Function to resolve a domain to an IP and check it
 async function extractAndCheckIP(url) {
   try {
-      // Check if URL is empty or invalid
       if (!url || url === '') {
           console.log("Skipping empty URL");
           return;
       }
 
-      // Try to construct URL object - will throw if invalid
+      if (checkMaliciousLinks(url)) return; // Check if URL is malicious first
+
       const urlObject = new URL(url);
       const hostname = urlObject.hostname;
       console.log(`Extracted domain: ${hostname}`);
@@ -85,7 +103,7 @@ async function checkEmailPhishing(emailText) {
         console.log("Prediction:", data.prediction);
 
         if (data.prediction === "Phishing Email") {
-            alert("⚠️ Warning: DO NOT CLICK ANY LINKS OR OPEN ANY ATTACHMENTS IN THIS EMAIL.\n This email might be a PHISHING attempt! \n\nProceed at your own risk.");
+            alert("⚠️ Warning: DO NOT CLICK ANY LINKS OR OPEN ANY ATTACHMENTS IN THIS EMAIL.\nThis email might be a PHISHING attempt! \n\nProceed at your own risk.");
         }
     } catch (error) {
         console.error("Error checking phishing:", error);
@@ -111,7 +129,7 @@ function extractEmailContent() {
             linkCount += links.length;
 
             // Store counts locally
-            chrome.storage.local.set({ emailCount, linkCount });
+            chrome.storage.local.set({ emailCount, linkCount, maliciousCount });
 
             // Send extracted email content for phishing check
             checkEmailPhishing(contentText);
