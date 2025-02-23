@@ -1,4 +1,4 @@
-# PhishMate
+# PhishMate [DEMO VIDEO](https://youtu.be/BHtsxgC5hHI)
 ## Your local protector from phishing mails
 
 PhishMate is a tool (used as a local chrome extension), that can detect and alert the user if it detects a fraudulent email, such as a phishing email, IN REAL TIME.
