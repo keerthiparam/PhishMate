@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Mail Content Logger",
+  "name": "PhishMate",
   "version": "1.0",
   "permissions": ["scripting", "activeTab", "storage"],
   "host_permissions": [
@@ -36,7 +36,18 @@
       "run_at": "document_end"
     }
   ],
+  "icons": {
+    "16": "icons/fish16.png",
+    "32": "icons/fish32.png",
+    "48": "icons/fish48.png",
+    "128": "icons/fish128.png"
+  },
   "action": {
+    "default_icon": {
+      "16": "icons/fish16.png",
+      "32": "icons/fish32.png",
+      "48": "icons/fish48.png"
+    },
     "default_popup": "popup.html"
   },
   "web_accessible_resources": [
