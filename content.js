@@ -34,7 +34,7 @@ async function checkIP(ip) {
         // Changed from response.result to response.data to match background.js
         const data = response.data;
         if (data && data.abuseConfidenceScore > 50) {
-            alert(`⚠️ Warning! The IP (${ip}) has a high abuse score (${data.abuseConfidenceScore}%)`);
+            alert(`🚨 Warning! The IP (${ip}) has a high abuse score (${data.abuseConfidenceScore}%).\n\n❗ Do NOT click on suspicious links or download attachments from this email.`);
         }
     });
 }
@@ -85,7 +85,7 @@ async function checkEmailPhishing(emailText) {
         console.log("Prediction:", data.prediction);
 
         if (data.prediction === "Phishing Email") {
-            alert("⚠️ Warning: This email might be a PHISHING attempt!");
+            alert("⚠️ Warning: DO NOT CLICK ANY LINKS OR OPEN ANY ATTACHMENTS IN THIS EMAIL.\n This email might be a PHISHING attempt! \n\nProceed at your own risk.");
         }
     } catch (error) {
         console.error("Error checking phishing:", error);
