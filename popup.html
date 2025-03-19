@@ -11,22 +11,36 @@
             width: 350px;
             text-align: center;
             background: #f9f9f9;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background: #1e1e1e;
+            color: #f1f1f1;
         }
         h1 { 
             font-size: 18px;
             margin-bottom: 10px;
             color: #333;
         }
+        h1.dark-mode {
+            color: #f1f1f1;
+        }
         h2 { 
             font-size: 14px; 
             margin-bottom: 5px; 
             color: #555;
+        }
+        h2.dark-mode {
+            color: #ccc;
         }
         p { 
             font-size: 14px; 
             margin: 5px 0; 
             font-weight: bold;
             color: #222;
+        }
+        p.dark-mode {
+            color: #ddd;
         }
         .logo { 
             width: 64px; 
@@ -37,16 +51,41 @@
             padding: 5px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         }
+        .dark-mode .logo {
+                background: #333333;
+        }
         .container {
             background: white;
             padding: 10px;
             border-radius: 10px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         }
+        .container.dark-mode {
+            background: #2c2c2c;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Toggle button */
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .toggle-btn img {
+            width: 24px;
+            height: 24px;
+        }
     </style>
 </head>
 <body>
-    <img src="icons/fish48.png" alt="PhishMate Logo" class="logo">
+    <button id="darkModeToggle" class="toggle-btn">
+        <img src="icons/light-icon.svg" id="modeIcon" alt="Light Mode">
+    </button>
+
+    <img src="icons/fish48.png" alt="PhishMate Logo" id="phishmateLogo" class="logo">
     <h1>PhishMate</h1>
 
     <div class="container">
