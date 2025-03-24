@@ -75,10 +75,13 @@ By keeping the phishing detection model self-hosted and minimizing external requ
 2. Employing a more robust model for content detection
 
 ## Future Plans
-1. As the user base expands, it is necessary to make sure the model can detect any type of phishing email. This means training the model with a bigger dataset to ensure accuracy with any type of content.
-2. Accommodating users from any browser; not just chrome.
-3. Expanded sources to check for malicious links.
-4. As the model size gets bigger and bigger, self hosting would, at one point become unrealistic. Then, it would have to be hosted on the cloud for inference, with appropriate SSL integration to ensure content safety.
+1. ~~Dark Mode~~ 
+2. As the user base expands, it is necessary to make sure the model can detect any type of phishing email. This means training the model with a bigger dataset to ensure accuracy with any type of content.
+3. Accommodating users from any browser; not just chrome.
+4. Expanded sources to check for malicious links.
+5. As the model size gets bigger and bigger, self hosting would, at one point become unrealistic. Then, it would have to be hosted on the cloud for inference, with appropriate SSL integration to ensure content safety.
+6. Improve the UI - adding an interface within the popup UI where the user can easily add their api key - no need to create a file manually and add it.
+7. For now, the project relies on the AbuseIPDB database. Further plans to extend the source for checking links like EasyList, which is an open source initiative, are under consideration. 
 
 ## Setting Up Locally
 
