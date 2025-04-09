@@ -1,0 +1,165 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 15px;
+    width: 350px;
+    text-align: center;
+    background: #f9f9f9;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background: #1e1e1e;
+    color: #f1f1f1;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.back-btn {
+    position: absolute;
+    left: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+h1 {
+    font-size: 18px;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+h1.dark-mode {
+    color: #f1f1f1;
+}
+
+h1 img.logo {
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+label {
+    font-size: 14px;
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+/* New container for input + eye icon */
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+    width: 80%;
+    margin: 10px auto;
+    padding: 0 10px;
+}
+
+body.dark-mode .input-group {
+    background: #2c2c2c;
+    border: 1px solid #555;
+}
+
+.input-group input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px;
+    background: transparent;
+    color: inherit;
+    font-size: 14px;
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+.toggle-password {
+    cursor: pointer;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password img {
+    width: 20px;
+    height: 20px;
+}
+
+button {
+    padding: 10px;
+    width: 20%;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.message {
+    display: none;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.message.success {
+    color: green;
+}
+
+.message.error {
+    color: red;
+}
+
+/* Center Save button and make it look nice */
+#save-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50%;
+    text-align: center;
+}
+
+#save-btn:hover {
+    background-color: #0056b3;
+}
+
+a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+body.dark-mode a {
+    color: #4da3ff;
+}
+
+body.dark-mode .back-btn img,
+body.dark-mode .toggle-password img {
+    filter: invert(1);
+}

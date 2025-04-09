@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
   "name": "PhishMate",
-  "version": "1.0",
+  "version": "1.1",
+  "description": "Your friendly neighborhood phishing mail detector",
   "permissions": ["scripting", "activeTab", "storage"],
   "host_permissions": [
     "https://mail.google.com/*",
@@ -52,7 +53,7 @@
   },
   "web_accessible_resources": [
   {
-    "resources": ["config.json"],
+    "resources": ["api.html"],
     "matches": ["chrome-extension://*/*"]
   }
  ]

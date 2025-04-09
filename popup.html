@@ -4,86 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhishMate</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif;
-            padding: 15px;
-            width: 350px;
-            text-align: center;
-            background: #f9f9f9;
-            transition: background 0.3s, color 0.3s;
-        }
-        body.dark-mode {
-            background: #1e1e1e;
-            color: #f1f1f1;
-        }
-        h1 { 
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-        h1.dark-mode {
-            color: #f1f1f1;
-        }
-        h2 { 
-            font-size: 14px; 
-            margin-bottom: 5px; 
-            color: #555;
-        }
-        h2.dark-mode {
-            color: #ccc;
-        }
-        p { 
-            font-size: 14px; 
-            margin: 5px 0; 
-            font-weight: bold;
-            color: #222;
-        }
-        p.dark-mode {
-            color: #ddd;
-        }
-        .logo { 
-            width: 64px; 
-            height: 64px; 
-            margin-bottom: 10px; 
-            border-radius: 50%;
-            background: white;
-            padding: 5px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        .dark-mode .logo {
-                background: #333333;
-        }
-        .container {
-            background: white;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .container.dark-mode {
-            background: #2c2c2c;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Toggle button */
-        .toggle-btn {
-            position: absolute;
-            top: 20px;
-            right: 15px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-        }
-        .toggle-btn img {
-            width: 24px;
-            height: 24px;
-        }
-    </style>
+    <link rel="stylesheet" href="popup.css">
+    <script src="popup.js" defer></script>
 </head>
 <body>
     <button id="darkModeToggle" class="toggle-btn">
-        <img src="icons/light-icon.svg" id="modeIcon" alt="Light Mode">
+        <img src="icons/theme.svg" id="modeIcon" alt="Light Mode">
     </button>
+
+    <button id="apiKeyBtn" class="key-btn">
+        <img src="icons/key.svg" alt="API Key Icon">
+    </button>    
 
     <img src="icons/fish48.png" alt="PhishMate Logo" id="phishmateLogo" class="logo">
     <h1>PhishMate</h1>
@@ -95,10 +26,18 @@
         <h2>🔗 Links Extracted</h2>
         <p id="linkCount">Loading...</p>
 
-        <h2>⚠ Malicious Links</h2>
+        <h2>⚠️ Malicious Links</h2>
         <p id="maliciousCount">Loading...</p>
     </div>
-
-    <script src="popup.js"></script>
+    
+    <div class="action-buttons">
+        <button id="refreshBtn" class="action-btn">
+            <img src="icons/refresh.svg" id="refreshIcon" alt="Refresh">
+        </button>
+        <button id="clearBtn" class="action-btn">
+            <img src="icons/bin.svg" id="binIcon" alt="Clear Data">
+        </button>
+    </div>
+    <p id="popupSuccessMessage" class="message success">Data cleared successfully! 🗑️</p>
 </body>
 </html>

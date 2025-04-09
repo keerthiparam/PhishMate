@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishMate API Key</title>
+    <link rel="stylesheet" href="api.css">
+</head>
+<body>
+
+    <div class="header">
+        <button id="back-btn" class="back-btn">
+            <img src="icons/back.svg" id="backIcon" alt="Back">
+        </button>
+        <h1>
+            AbuseIPDB API Key
+            <img src="icons/abuseipdb.svg" alt="AbuseIPDB Logo" class="logo">
+        </h1>
+    </div>
+
+    <label for="apiKey">Enter Your API Key:</label>
+    <div class="input-group">
+        <input type="password" id="apiKey" placeholder="Enter API Key">
+        <span class="toggle-password">
+            <img src="icons/eye.svg" id="eyeIcon" alt="Toggle Password">
+        </span>
+    </div>
+    <p>
+        Don't have an API key? 
+        <a href="https://www.abuseipdb.com/account/api" target="_blank">Get your API Key</a>
+    </p>
+    <button id="save-btn">Save</button>
+
+    <p id="successMessage" class="message success">API Key saved successfully!</p>
+    <p id="errorMessage" class="message error">Failed to save API Key.</p>
+
+    <script src="api.js"></script>
+</body>
+</html>

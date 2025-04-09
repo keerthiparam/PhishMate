@@ -55,16 +55,13 @@ Defines icons for different sizes (16x16, 32x32, 48x48, 128x128).
 - Default icon for the extension button.
 - `default_popup`: **"popup.html"** - A popup UI for user interaction.
 
-### 8. Web Accessible Resources
-- Allows access to `config.json` within the extension's context.
-
 ## Privacy Concerns
 PhishMate is designed with user privacy in mind. However, the following considerations should be noted:
 1. **Data Collection**
    - The contents of the email extracted are processed by the model local to your device upon downloading it. Hence, there is no worry about your email content being intercepted by third parties.
    - In the same way, the links are checked by AbuseIPDB which is designed ONLY to check the reputation of the IP and not the content inside it.
 2. **Self Hosted Model**
-    - The model, after being set up succesfully, is run on a **Completely Local API**.
+    - The model, after being set up successfully, is run on a **Completely Local API**.
 3. **Chrome Based Browsers**
     - The tool, since it is designed to be a chrome extension, works only on chrome based browsers. 
 
@@ -77,11 +74,11 @@ By keeping the phishing detection model self-hosted and minimizing external requ
 ## Future Plans
 1. ~~Dark Mode~~
 2. ~~Initial version Release~~ 
-3. As the user base expands, it is necessary to make sure the model can detect any type of phishing email. This means training the model with a bigger dataset to ensure accuracy with any type of content.
-4. Accommodating users from any browser; not just chrome.
-5. Expanded sources to check for malicious links.
-6. As the model size gets bigger and bigger, self hosting would, at one point become unrealistic. Then, it would have to be hosted on the cloud for inference, with appropriate SSL integration to ensure content safety.
-7. Improve the UI - adding an interface within the popup UI where the user can easily add their api key - no need to create a file manually and add it.
+3. ~~Improve the UI - adding an interface within the popup UI where the user can easily add their api key - no need to create a file manually and add it.~~
+4.   As the user base expands, it is necessary to make sure the model can detect any type of phishing email. This means training the model with a bigger dataset to ensure accuracy with any type of content.
+5. Accommodating users from any browser; not just chrome.
+6. Expanded sources to check for malicious links.
+7. As the model size gets bigger and bigger, self hosting would, at one point become unrealistic. Then, it would have to be hosted on the cloud for inference, with appropriate SSL integration to ensure content safety. 
 8. For now, the project relies on the AbuseIPDB database. Further plans to extend the source for checking links like EasyList, which is an open source initiative, are under consideration. 
 
 ## Setting Up Locally
@@ -105,13 +102,8 @@ To set up PhishMate locally, follow these steps:
      python mail_checker.py
      ```
    - Ensure the server is running at `http://127.0.0.1:5000/predict`.
-   - Create a new file `config.json`.
-   - Go to `https://www.abuseipdb.com/`, create a new account and obtain an API Key.
-   - Type the following in the `config.json` file.
-   ```json
-    {
-    "abuseIPDB_API_KEY" : "YOUR API KEY"
-    }
+   - Click on the key icon on the top left.
+   - Enter your API key.
 3. **Install the Chrome Extension**
    - Open Chrome and navigate to `chrome://extensions/`.
    - Enable **Developer mode** (toggle in the top right).
