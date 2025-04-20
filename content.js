@@ -3,6 +3,17 @@ let emailCount = 0;
 let linkCount = 0;
 let maliciousCount = 0;
 let abuseIPDB_API_KEY = "";
+let alertShown = false;
+const processedEmails = new Set();
+
+// Debounce to limit multiple triggers
+function debounce(func, delay) {
+    let timer;
+    return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+    };
+}
 
 // Request API key from background.js
 async function requestAPIKey() {
@@ -29,6 +40,29 @@ function isValidURL(url) {
     }
 }
 
+// Unified alert handler
+function handleAlert(reason) {
+    if (alertShown) return;
+    alertShown = true;
+
+    let message = "🚨 WARNING 🚨\n\n";
+    switch (reason) {
+        case "ip":
+            message += "The links in this email are associated with a high-abuse IP address.\nThey may lead to unsafe websites.";
+            break;
+        case "model":
+            message += "This email’s content resembles phishing patterns.\nBe cautious before taking any action.";
+            break;
+        case "both":
+            message += "This email is suspicious.\n\n⚠️ The content resembles phishing patterns.\n⚠️ The links are from flagged IP addresses.";
+            break;
+        default:
+            message += "Unknown threat detected.";
+    }
+
+    alert(message);
+}
+
 // Resolve domain to IP and check it
 async function extractAndCheckIP(url) {
     if (!url || url === '' || !isValidURL(url)) {
@@ -45,11 +79,11 @@ async function extractAndCheckIP(url) {
 
         if (dnsData.Answer && dnsData.Answer.length > 0) {
             let isMalicious = false;
-            
+
             for (const record of dnsData.Answer) {
                 const ip = record.data;
                 console.log(`Resolved IP: ${ip}`);
-                
+
                 if (await checkIP(ip)) {
                     isMalicious = true;
                 }
@@ -84,7 +118,7 @@ async function checkIP(ip) {
         const score = data.data?.abuseConfidenceScore || 0;
 
         if (score > 50) {
-            alert(`🚨 WARNING 🚨\n\nThe IP (${ip}) has a high abuse score (${score}%).`);
+            console.warn(`High abuse score for IP (${ip}): ${score}%`);
             return true;
         }
     } catch (error) {
@@ -112,47 +146,63 @@ async function checkEmailPhishing(emailText) {
 
 // Extract and check links + phishing
 async function checkLinksAndPhishing(links, contentText) {
-    let isMalicious = false;
+    let ipFlag = false;
+    let modelFlag = false;
 
     for (const link of links) {
         if (await extractAndCheckIP(link)) {
-            isMalicious = true;
+            ipFlag = true;
         }
     }
 
     if (await checkEmailPhishing(contentText)) {
-        isMalicious = true;
+        modelFlag = true;
     }
 
-    return isMalicious;
+    if (ipFlag && modelFlag) {
+        handleAlert("both");
+    } else if (ipFlag) {
+        handleAlert("ip");
+    } else if (modelFlag) {
+        handleAlert("model");
+    }
+
+    return ipFlag || modelFlag;
 }
 
 // Extract email content
 async function extractEmailContent() {
     const emailBody = document.querySelector(".a3s.aiL, .ii.gt, .mail-message-content");
-    
+
     if (emailBody) {
         const contentText = emailBody.innerText.trim();
-        const links = Array.from(emailBody.querySelectorAll("a"), link => link.href);
+        const contentHash = btoa(unescape(encodeURIComponent(contentText)));
 
-        if (contentText !== lastEmailContent) {
-            const isMalicious = await checkLinksAndPhishing(links, contentText);
-
-            if (isMalicious) {
-                maliciousCount++;
-                chrome.storage.local.set({ maliciousCount });
-            }
-
-            lastEmailContent = contentText;
-            emailCount++;
-            linkCount += links.length;
-            chrome.storage.local.set({ emailCount, linkCount });
+        if (processedEmails.has(contentHash)) {
+            return;
         }
+
+        processedEmails.add(contentHash);
+        alertShown = false;
+
+        const links = Array.from(emailBody.querySelectorAll("a"), link => link.href);
+        const isMalicious = await checkLinksAndPhishing(links, contentText);
+
+        if (isMalicious) {
+            maliciousCount++;
+            chrome.storage.local.set({ maliciousCount });
+        }
+
+        lastEmailContent = contentText;
+        emailCount++;
+        linkCount += links.length;
+        chrome.storage.local.set({ emailCount, linkCount });
     }
 }
 
-// Observe changes
-const observer = new MutationObserver(extractEmailContent);
+// Setup observer with debounce
+const debouncedExtract = debounce(extractEmailContent, 1000); // 1 sec delay
+const observer = new MutationObserver(debouncedExtract);
 observer.observe(document.body, { childList: true, subtree: true });
 
 requestAPIKey();
