@@ -1,0 +1,1 @@
+After downloading the model from Google Drive, extract it to this folder.
