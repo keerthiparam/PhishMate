@@ -79,7 +79,7 @@ These technologies ensure the extension is lightweight and fast while maintainin
    - Chromium-based Browsers
    - Firefox (Coming soon)
 
-## File Structure
+## File Structure [⌐■_■]
 ```
 PhishMate
 ├── background.js
