@@ -59,6 +59,7 @@ From fake CEO mails to convincing Social Engineering Attacks targeted towards em
   - JS
 - <b>Backend/ Local API</b>
   - Python
+  - Flask
 
 These technologies ensure the extension is lightweight and fast while maintaining robust phishing detection.
 
