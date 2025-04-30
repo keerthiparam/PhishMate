@@ -35,7 +35,7 @@ PhishMate is a browser extension that uses AI with link extraction to check if a
 ---
 ## Demo 🎬
 
-https://github.com/user-attachments/assets/b89fc00e-a0e4-4803-be99-8293f80f8f12
+https://github.com/user-attachments/assets/b57aeccb-8807-46a8-b8cd-6ac134825d86
 
 > ⚠️ **Disclaimer:** The API key visible in the demo video has been deleted and poses no security risk. It was shown for demonstration purposes only.
 
